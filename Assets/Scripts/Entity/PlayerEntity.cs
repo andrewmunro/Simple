@@ -4,10 +4,13 @@ using UnityStandardAssets.Characters.FirstPerson;
 namespace Assets.Scripts.Entity
 {
     [RequireComponent(typeof (FirstPersonController))]
+    [RequireComponent(typeof (Camera))]
+    [RequireComponent(typeof (AudioListener))]
     public class PlayerEntity : AbstractEntity
     {
         public FirstPersonController Controller { get; private set; }
         public Camera Camera { get; private set; }
+        public AudioListener AudioListener { get; private set; }
 
         public override void OnStartClient()
         {
@@ -15,6 +18,7 @@ namespace Assets.Scripts.Entity
 
             Controller = GetComponent<FirstPersonController>();
             Camera = gameObject.GetComponentInChildren<Camera>();
+            AudioListener = gameObject.GetComponentInChildren<AudioListener>();
             SetPlayerState(false);
         }
 
@@ -37,6 +41,7 @@ namespace Assets.Scripts.Entity
         {
             Controller.enabled = local;
             Camera.enabled = local;
+            AudioListener.enabled = local;
         }
     }
 }
