@@ -1,11 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
+#pragma warning disable 0618
 public class CameraDeAlpha : MonoBehaviour {
     // After camera is rendered, this clears alpha channel of it's
     // render texture to pure white.
     private Material mat;
- 
+
     void OnPostRender() {
         if (!mat) {
             mat = new Material ("Shader \"Hidden/Alpha\" {" +

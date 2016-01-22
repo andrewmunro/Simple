@@ -12,6 +12,8 @@ using System;
 using System.IO;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
 public class CameraPathEditorInspectorGUI 
@@ -1735,7 +1737,7 @@ public class CameraPathEditorInspectorGUI
 
     private static void ExportXML()
     {
-        string[] currentScene = EditorApplication.currentScene.Split(char.Parse("/"));
+        string[] currentScene = SceneManager.GetActiveScene().path.Split(char.Parse("/"));
         currentScene = currentScene[currentScene.Length-1].Split(char.Parse("."));
         string defaultName = string.Format("{0}_{1}", currentScene[0], _cameraPath.name);
         defaultName = defaultName.Replace(" ", "_");
