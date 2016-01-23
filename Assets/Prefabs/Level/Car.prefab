@@ -68,7 +68,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &123658
 GameObject:
   m_ObjectHideFlags: 1
@@ -301,6 +301,11 @@ GameObject:
   - 114: {fileID: 11407540}
   - 114: {fileID: 11450628}
   - 114: {fileID: 11450790}
+  - 114: {fileID: 11453752}
+  - 114: {fileID: 11474836}
+  - 114: {fileID: 11446804}
+  - 114: {fileID: 11499210}
+  - 114: {fileID: 11468582}
   m_Layer: 0
   m_Name: Car
   m_TagString: Player
@@ -497,8 +502,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189498}
-  m_LocalRotation: {x: 0, y: -0.72267616, z: 0, w: 0.6911868}
-  m_LocalPosition: {x: 12.177708, y: -1.76, z: -97.66077}
+  m_LocalRotation: {x: 0, y: -0.705358, z: 0, w: 0.7088512}
+  m_LocalPosition: {x: 67.290085, y: 0.14, z: -63.09238}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 408686}
@@ -1381,10 +1386,10 @@ MonoBehaviour:
   - {fileID: 101712}
   - {fileID: 146896}
   m_WheelEffects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11471060}
+  - {fileID: 11459944}
+  - {fileID: 11473178}
+  - {fileID: 11433566}
   m_CentreOfMassOffset: {x: 0, y: 0, z: 0}
   m_MaximumSteerAngle: 25
   m_SteerHelper: 0.644
@@ -1410,7 +1415,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkidTrailPrefab: {fileID: 400000, guid: 4b6aa99de5d21424eab6ae279f31475b, type: 2}
-  skidParticles: {fileID: 0}
+  skidParticles: {fileID: 19841342}
+--- !u!114 &11446804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da3e552ec3239f642b361a2b0b1afe40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11450628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1445,6 +1461,38 @@ MonoBehaviour:
   maxRolloffDistance: 500
   dopplerLevel: 1
   useDoppler: 1
+--- !u!114 &11453752
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 89
+    i1: 236
+    i2: 42
+    i3: 146
+    i4: 169
+    i5: 10
+    i6: 165
+    i7: 180
+    i8: 218
+    i9: 148
+    i10: 161
+    i11: 127
+    i12: 52
+    i13: 47
+    i14: 0
+    i15: 189
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &11459944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1457,7 +1505,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkidTrailPrefab: {fileID: 400000, guid: 4b6aa99de5d21424eab6ae279f31475b, type: 2}
-  skidParticles: {fileID: 0}
+  skidParticles: {fileID: 19841342}
+--- !u!114 &11468582
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267208747, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 488112}
+  m_ChildIndex: 1
+  m_SendInterval: 0.14285715
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_MovementThreshold: 0.001
+  m_InterpolateRotation: 0.5
+  m_InterpolateMovement: 0.5
 --- !u!114 &11471060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1470,7 +1537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkidTrailPrefab: {fileID: 400000, guid: 4b6aa99de5d21424eab6ae279f31475b, type: 2}
-  skidParticles: {fileID: 0}
+  skidParticles: {fileID: 19841342}
 --- !u!114 &11473178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1483,7 +1550,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkidTrailPrefab: {fileID: 400000, guid: 4b6aa99de5d21424eab6ae279f31475b, type: 2}
-  skidParticles: {fileID: 0}
+  skidParticles: {fileID: 19841342}
+--- !u!114 &11474836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 1
+  m_MovementTheshold: 0.001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &11498968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1496,6 +1583,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 11407540}
+--- !u!114 &11499210
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1267208747, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 479714}
+  m_ChildIndex: 0
+  m_SendInterval: 0.14285715
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_MovementThreshold: 0.001
+  m_InterpolateRotation: 0.5
+  m_InterpolateMovement: 0.5
 --- !u!124 &12412310
 Behaviour:
   m_ObjectHideFlags: 1
@@ -3105,7 +3211,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_SyncSpin
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 189498}
