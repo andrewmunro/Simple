@@ -1,6 +1,5 @@
 ﻿#if UNITY_EDITOR
-using Assets.Extensions.Locations;
-using Location;
+using Assets.Scripts.Simple.Vendor.Locations;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,7 +14,6 @@ namespace Assets.Editor
         private GUIStyle TinyButton;
         private GUIStyle TinyButtonWide;
         private GUIStyle TinyButtonRed;
-        private string groupName = "Locations";
 
         private void DrawWarpPointEntry(WorldLocation loc)
         {
