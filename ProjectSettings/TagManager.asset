@@ -6,6 +6,8 @@ TagManager:
   tags:
   - LocalOnly
   - RemoteOnly
+  - Vehicle
+  - PlayerModel
   layers:
   - Default
   - TransparentFX

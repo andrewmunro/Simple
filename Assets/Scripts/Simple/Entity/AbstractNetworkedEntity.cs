@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
-using Assets.Scripts.Simple.Utils.Extensions;
+using Assets.Scripts.Framework.Utils.Extensions;
 using UnityEngine;
 using UnityEngine.Networking;
 
 namespace Assets.Scripts.Simple.Entity
 {
+    [RequireComponent(typeof(NetworkIdentity))]
     public abstract class AbstractNetworkedEntity : NetworkBehaviour
     {
         protected List<GameObject> LocalOnlyObjects { get; private set; }
@@ -25,8 +26,11 @@ namespace Assets.Scripts.Simple.Entity
         {
             base.OnStartAuthority();
 
-            RemoteOnlyObjects.ForEach(g => g.SetActive(false));
-            LocalOnlyObjects.ForEach(g => g.SetActive(true));
+            if (LocalOnlyObjects != null && RemoteOnlyObjects != null)
+            {
+                RemoteOnlyObjects.ForEach(g => g.SetActive(false));
+                LocalOnlyObjects.ForEach(g => g.SetActive(true));
+            }
         }
 
         public override void OnStopAuthority()

@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Simple.Utils.Extensions;
+﻿using Assets.Scripts.Framework.Utils.Extensions;
+using Assets.Scripts.Simple.Entity;
 using Assets.Scripts.Simple.Vendor.Locations;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -11,6 +12,7 @@ namespace Assets.Scripts.Simple
         public WorldLocations SpawnPoints { get; private set; }
 
         private GameObject CarPrefab { get { return spawnPrefabs.Find(p => p.name == "Car"); }  }
+
 
         public override void OnStartServer()
         {
@@ -36,20 +38,22 @@ namespace Assets.Scripts.Simple
 
         public override void OnClientDisconnect(NetworkConnection conn)
         {
+            var player = conn.playerControllers[0].gameObject;
+            var entity = player.GetComponent<PlayerEntity>();
+            if (entity.InVehicle != null)
+            {
+                entity.CmdLeaveVehicle(entity.netId, entity.InVehicle.netId);
+            }
             StopClient();
         }
 
         public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
         {
             var spawnPoint = SpawnPoints.Locations.GetRandom();
-
-            var prefab = spawnPoint.Name == "Car" ? CarPrefab : playerPrefab;
-
-            var playerObject = Instantiate(prefab, spawnPoint.Position, Quaternion.Euler(spawnPoint.Rotation));
+            var playerObject = Instantiate(playerPrefab, spawnPoint.Position, Quaternion.Euler(spawnPoint.Rotation));
             NetworkServer.AddPlayerForConnection(conn, (GameObject)playerObject, playerControllerId);
         }
 
-        // called when a player is removed for a client
         public override void OnServerRemovePlayer(NetworkConnection conn, PlayerController player)
         {
             NetworkServer.Destroy(player.gameObject);

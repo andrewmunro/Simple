@@ -3,6 +3,9 @@
     public enum Tags
     {
         LocalOnly,
-        RemoteOnly
+        RemoteOnly,
+        Player,
+        GameController,
+        PlayerModel
     }
 }
