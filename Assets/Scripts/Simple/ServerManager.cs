@@ -1,8 +1,9 @@
-﻿using Assets.Scripts.Framework.Utils.Extensions;
-using Assets.Scripts.Simple.Entity;
+﻿using Assets.Scripts.Simple.Entity.Player;
+using Assets.Scripts.Simple.Utils.Extensions;
 using Assets.Scripts.Simple.Vendor.Locations;
 using UnityEngine;
 using UnityEngine.Networking;
+using PlayerController = UnityEngine.Networking.PlayerController;
 
 namespace Assets.Scripts.Simple
 {
@@ -11,16 +12,9 @@ namespace Assets.Scripts.Simple
     {
         public WorldLocations SpawnPoints { get; private set; }
 
-        private GameObject CarPrefab { get { return spawnPrefabs.Find(p => p.name == "Car"); }  }
-
-
         public override void OnStartServer()
         {
-#if UNITY_WEBGL
-            useWebSockets = true;
-#endif
             base.OnStartServer();
-
 
             SpawnPoints = GetComponent<WorldLocations>();
         }
@@ -45,9 +39,9 @@ namespace Assets.Scripts.Simple
         {
             var player = conn.playerControllers[0].gameObject;
             var entity = player.GetComponent<PlayerEntity>();
-            if (entity.InVehicle != null)
+            if (entity.Info.InVehicle != null)
             {
-                entity.CmdLeaveVehicle(entity.netId, entity.InVehicle.netId);
+                entity.LeaveVehicle();
             }
             StopClient();
         }

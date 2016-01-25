@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 using UnityEngine;
+using Debug = Assets.Scripts.Simple.Utils.Debug;
+
 #if UNITY_EDITOR
 
 #endif

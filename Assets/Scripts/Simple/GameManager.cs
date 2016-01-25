@@ -1,22 +1,33 @@
-﻿using Assets.Scripts.Framework;
-using Assets.Scripts.Framework.Component.State;
-using Assets.Scripts.Simple.Components.Npc;
+﻿using System.Collections.Generic;
+using Assets.Scripts.Simple.Entity;
+using Assets.Scripts.Simple.Entity.Player;
 using UnityEngine;
 
 namespace Assets.Scripts.Simple
 {
     [RequireComponent(typeof(ServerManager))]
-    public class GameManager : AbstractGameManager
+    public class GameManager : MonoBehaviour
     {
-        public new static GameManager Instance { get; private set; }
+        private const string PLAYER_ID_PREFIX = "Player ";
 
-        protected override void Awake()
+        public static GameManager Instance { get; private set; }
+
+        public PlayerEntity LocalPlayer { get; private set; }
+
+        private Dictionary<string, PlayerEntity> Players { get; set; }
+
+        private void Awake()
         {
-            base.Awake();
-
             Instance = this;
 
-            Components.Add(new NpcComponent());
+            Players = new Dictionary<string, PlayerEntity>();
+        }
+
+        public void AddPlayer(string networkId, PlayerEntity player)
+        {
+            Players.Add(networkId, player);
+            if (player.isLocalPlayer) LocalPlayer = player;
+            player.transform.name = PLAYER_ID_PREFIX + networkId;
         }
     }
 }

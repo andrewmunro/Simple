@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Assets.Scripts.Framework.Utils.Extensions;
+using Assets.Scripts.Simple.Utils.Extensions;
 using UnityEngine;
 using UnityEngine.Networking;
 

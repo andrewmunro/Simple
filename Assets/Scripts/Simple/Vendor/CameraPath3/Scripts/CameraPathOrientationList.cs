@@ -11,6 +11,8 @@
 using System.Xml;
 using Assets.Scripts.Simple.Vendor.CameraPath3.Scripts.Util;
 using UnityEngine;
+using Debug = Assets.Scripts.Simple.Utils.Debug;
+
 #if UNITY_EDITOR
 
 #endif

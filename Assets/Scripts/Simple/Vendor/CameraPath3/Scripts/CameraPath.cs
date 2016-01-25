@@ -18,6 +18,7 @@ using System.Xml;
 using Assets.Scripts.Simple.Vendor.CameraPath3.Scripts.Enum;
 using Assets.Scripts.Simple.Vendor.CameraPath3.Scripts.Util;
 using UnityEngine;
+using Debug = Assets.Scripts.Simple.Utils.Debug;
 
 namespace Assets.Scripts.Simple.Vendor.CameraPath3.Scripts
 {
