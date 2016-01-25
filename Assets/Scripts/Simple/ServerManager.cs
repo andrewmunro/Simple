@@ -16,7 +16,12 @@ namespace Assets.Scripts.Simple
 
         public override void OnStartServer()
         {
+#if UNITY_WEBGL
+            useWebSockets = true;
+#endif
             base.OnStartServer();
+
+
             SpawnPoints = GetComponent<WorldLocations>();
         }
 

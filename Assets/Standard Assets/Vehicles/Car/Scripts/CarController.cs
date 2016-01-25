@@ -270,7 +270,7 @@ namespace UnityStandardAssets.Vehicles.Car
         // these effects are controlled through the WheelEffects class
         private void CheckForWheelSpin()
         {
-
+            return;
             // loop through all wheels
             for (int i = 0; i < 4; i++)
             {
