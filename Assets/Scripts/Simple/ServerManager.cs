@@ -49,12 +49,18 @@ namespace Assets.Scripts.Simple
         public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
         {
             var spawnPoint = SpawnPoints.Locations.GetRandom();
-            var playerObject = Instantiate(playerPrefab, spawnPoint.Position, Quaternion.Euler(spawnPoint.Rotation));
-            NetworkServer.AddPlayerForConnection(conn, (GameObject)playerObject, playerControllerId);
+            var playerObject = (GameObject)Instantiate(playerPrefab, spawnPoint.Position, Quaternion.Euler(spawnPoint.Rotation));
+            var playerEntity = playerObject.GetComponent<PlayerEntity>();
+
+            GameManager.Instance.AddPlayer(playerEntity.netId.ToString(), playerEntity);
+            NetworkServer.AddPlayerForConnection(conn, playerObject, playerControllerId);
         }
 
         public override void OnServerRemovePlayer(NetworkConnection conn, PlayerController player)
         {
+            var playerEntity = conn.playerControllers[0].gameObject.GetComponent<PlayerEntity>();
+
+            GameManager.Instance.RemovePlayer(playerEntity.netId.ToString());
             NetworkServer.Destroy(player.gameObject);
         }
     }

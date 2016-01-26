@@ -43,6 +43,11 @@ namespace Assets.Scripts.Simple.Entity.Player
                     }
                 }
             }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                PlayerEntity.Shoot();
+            }
         }
     }
 }

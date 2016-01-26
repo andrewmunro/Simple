@@ -35,5 +35,10 @@ namespace Assets.Scripts.Simple.Entity.Player
         {
             Commands.CmdLeaveVehicle(netId, Info.InVehicle.netId);
         }
+
+        public void Shoot()
+        {
+            Commands.CmdShoot(netId);
+        }
     }
 }

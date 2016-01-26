@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Assets.Scripts.Simple.Entity;
 using Assets.Scripts.Simple.Entity.Player;
 using UnityEngine;
 
@@ -11,6 +10,8 @@ namespace Assets.Scripts.Simple
         private const string PLAYER_ID_PREFIX = "Player ";
 
         public static GameManager Instance { get; private set; }
+
+        public GameObject BulletPrefab;
 
         public PlayerEntity LocalPlayer { get; private set; }
 
@@ -28,6 +29,11 @@ namespace Assets.Scripts.Simple
             Players.Add(networkId, player);
             if (player.isLocalPlayer) LocalPlayer = player;
             player.transform.name = PLAYER_ID_PREFIX + networkId;
+        }
+
+        public void RemovePlayer(string networkId)
+        {
+            Players.Remove(networkId);
         }
     }
 }
