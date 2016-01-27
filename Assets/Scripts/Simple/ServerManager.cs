@@ -52,8 +52,8 @@ namespace Assets.Scripts.Simple
             var playerObject = (GameObject)Instantiate(playerPrefab, spawnPoint.Position, Quaternion.Euler(spawnPoint.Rotation));
             var playerEntity = playerObject.GetComponent<PlayerEntity>();
 
-            GameManager.Instance.AddPlayer(playerEntity.netId.ToString(), playerEntity);
             NetworkServer.AddPlayerForConnection(conn, playerObject, playerControllerId);
+            GameManager.Instance.AddPlayer(playerEntity.netId.ToString(), playerEntity);
         }
 
         public override void OnServerRemovePlayer(NetworkConnection conn, PlayerController player)

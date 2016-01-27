@@ -20,9 +20,11 @@ namespace Assets.Scripts.Simple.Entity.Player
             var playerEntity = ClientScene.FindLocalObject(playerId).GetComponent<PlayerEntity>();
             var bulletSpawn = playerEntity.transform.position + playerEntity.transform.forward * 1;
 
-            var bulletPrefab = GameManager.Instance.BulletPrefab;
-
-            var bullet = (GameObject) Instantiate(bulletPrefab, bulletSpawn, bulletPrefab.transform.rotation * playerEntity.transform.rotation);
+            var bullet = Instantiate(GameManager.Instance.BulletPrefab);
+            bullet.transform.position = bulletSpawn;
+            var bulletEntity = bullet.GetComponent<BulletEntity>();
+            bulletEntity.BulletRotation = playerEntity.transform.rotation;
+            bulletEntity.SpawnedBy = playerEntity;
             NetworkServer.Spawn(bullet);
         }
 

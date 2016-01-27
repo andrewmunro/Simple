@@ -225,12 +225,12 @@ GameObject:
   - 114: {fileID: 11442108}
   - 114: {fileID: 11446728}
   - 65: {fileID: 6557276}
-  - 114: {fileID: 11411160}
   - 114: {fileID: 11422322}
   - 114: {fileID: 11416586}
   - 114: {fileID: 11441412}
   - 114: {fileID: 11421820}
   - 114: {fileID: 11491940}
+  - 114: {fileID: 11400896}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1057,7 +1057,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &11411160
+--- !u!114 &11400896
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1065,11 +1065,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 189360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97298ef9445051e4eab0cf9c1e8152ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 4afe4ee0cfc0b654daefeb5ff4366c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 189360}
-  Text: 'Player: Unknown'
+  Text: 
   Offset: {x: 0, y: 0, z: 0}
 --- !u!114 &11416586
 MonoBehaviour:
@@ -1084,6 +1083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 100
   CurrentHealth: 0
+  Name: 
 --- !u!114 &11421820
 MonoBehaviour:
   m_ObjectHideFlags: 1

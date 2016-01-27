@@ -10,8 +10,11 @@ namespace Assets.Scripts.Simple.Entity.Player
         [SerializeField]
         public int MaxHealth = 100;
 
-        [SyncVar]
+        [SyncVar(hook = "OnCurrentHealthChanged")]
         public int CurrentHealth;
+
+        [SyncVar(hook = "OnNameChanged")]
+        public string Name;
 
         public VehicleEntity InVehicle { get; set; }
 
@@ -26,6 +29,19 @@ namespace Assets.Scripts.Simple.Entity.Player
         {
             CurrentHealth = MaxHealth;
             EnterableVehicles = new List<VehicleEntity>();
+        }
+
+        private void OnCurrentHealthChanged(int value)
+        {
+            if (isLocalPlayer)
+            {
+                Debug.Log("I took damage! New HP: " + value);
+            }
+        }
+
+        private void OnNameChanged(string value)
+        {
+            transform.name = value;
         }
     }
 }

@@ -7,13 +7,12 @@ namespace Assets.Scripts.Simple.Vendor
         float boxW = 150f;
         float boxH = 25f;
 
-        public GameObject Target;
         public string Text;
         public Vector3 Offset = Vector3.zero;
 
-        void OnGUI()
+        public virtual void OnGUI()
         {
-            Vector2 TextLocation = Camera.main.WorldToScreenPoint((Target != null ? Target.transform.position : Vector3.zero) + Offset);
+            Vector2 TextLocation = Camera.main.WorldToScreenPoint(transform.position + Offset);
 
             TextLocation.y = Screen.height - TextLocation.y;
 
