@@ -14,18 +14,27 @@ namespace Assets.Scripts.Simple.Entity
         [SyncVar(hook="OnRotationSet")]
         public Quaternion BulletRotation;
 
+        [SyncVar(hook = "OnSpawnedBySet")]
+        public uint SpawnedByIdentity;
+
         public PlayerEntity SpawnedBy { get; set; }
 
         public override void OnStartClient()
         {
             base.OnStartClient();
 
+            OnSpawnedBySet(SpawnedByIdentity);
+            OnRotationSet(BulletRotation);
+        }
+
+        private void OnSpawnedBySet(uint identity)
+        {
+            SpawnedBy = ClientScene.FindLocalObject(new NetworkInstanceId(identity)).GetComponent<PlayerEntity>();
+
             if (SpawnedBy.Info.InVehicle != null)
             {
                 SpawnedBy.Info.InVehicle.Colliders.ForEach(c => Physics.IgnoreCollision(c, GetComponent<Collider>()));
             }
-
-            OnRotationSet(BulletRotation);
         }
 
         private void OnRotationSet(Quaternion rotation)

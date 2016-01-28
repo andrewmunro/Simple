@@ -25,7 +25,7 @@ namespace Assets.Scripts.Simple.Entity.Player
 
             bullet.transform.position = bulletSpawn;
             bulletEntity.BulletRotation = bulletSpawnPostion.rotation;
-            bulletEntity.SpawnedBy = playerEntity;
+            bulletEntity.SpawnedByIdentity = playerId.Value;
 
             NetworkServer.Spawn(bullet);
         }
