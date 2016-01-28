@@ -25,6 +25,14 @@ namespace Assets.Scripts.Simple.Entity.Player
             SetDefaultValues();
         }
 
+        public override void OnStartClient()
+        {
+            base.OnStartClient();
+
+            OnCurrentHealthChanged(CurrentHealth);
+            OnNameChanged(Name);
+        }
+
         private void SetDefaultValues()
         {
             CurrentHealth = MaxHealth;

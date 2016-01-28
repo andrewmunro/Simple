@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Simple.Entity.Vehicle;
-using UnityEngine;
 using UnityEngine.Networking;
 
 namespace Assets.Scripts.Simple.Entity.Player
@@ -18,13 +17,16 @@ namespace Assets.Scripts.Simple.Entity.Player
         public void CmdShoot(NetworkInstanceId playerId)
         {
             var playerEntity = ClientScene.FindLocalObject(playerId).GetComponent<PlayerEntity>();
-            var bulletSpawn = playerEntity.transform.position + playerEntity.transform.forward * 1;
+            var bulletSpawnPostion = playerEntity.Controller.CurrentWeapon.BulletSpawnPosition;
+            var bulletSpawn = bulletSpawnPostion.position + bulletSpawnPostion.transform.up * 0.5f;
 
             var bullet = Instantiate(GameManager.Instance.BulletPrefab);
-            bullet.transform.position = bulletSpawn;
             var bulletEntity = bullet.GetComponent<BulletEntity>();
-            bulletEntity.BulletRotation = playerEntity.transform.rotation;
+
+            bullet.transform.position = bulletSpawn;
+            bulletEntity.BulletRotation = bulletSpawnPostion.rotation;
             bulletEntity.SpawnedBy = playerEntity;
+
             NetworkServer.Spawn(bullet);
         }
 

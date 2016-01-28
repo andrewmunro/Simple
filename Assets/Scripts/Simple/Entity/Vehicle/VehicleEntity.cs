@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Simple.Entity.Player;
 using UnityEngine;
 using UnityStandardAssets.Vehicles.Car;
@@ -15,6 +16,7 @@ namespace Assets.Scripts.Simple.Entity.Vehicle
         public CarUserControl Input { get; private set; }
         public CarAudio CarAudio { get; private set; }
         public Camera Camera { get; private set; }
+        public List<Collider> Colliders { get; private set; }
 
         public PlayerEntity Driver { get; private set; }
         public List<PlayerEntity> Occupants { get; private set; }  
@@ -28,6 +30,7 @@ namespace Assets.Scripts.Simple.Entity.Vehicle
             Input = GetComponent<CarUserControl>();
             (CarAudio = GetComponent<CarAudio>()).maxRolloffDistance = 0;
             Camera = gameObject.GetComponentInChildren<Camera>();
+            Colliders = GetComponentsInChildren<Collider>().ToList();
 
             SetVehicleState(false);
         }

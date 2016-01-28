@@ -6,6 +6,7 @@
         RemoteOnly,
         Player,
         GameController,
-        PlayerModel
+        PlayerModel,
+        Weapon
     }
 }

@@ -15,6 +15,7 @@ namespace Assets.Scripts.Simple.Entity.Player
         public AudioListener AudioListener { get; private set; }
         public TextLabel TextLabel { get; private set; }
         public GameObject Model { get; private set; }
+        public GunEntity CurrentWeapon { get; set; }
 
         public override void OnStartClient()
         {
@@ -25,6 +26,7 @@ namespace Assets.Scripts.Simple.Entity.Player
             Camera = gameObject.GetComponentInChildren<Camera>();
             AudioListener = gameObject.GetComponentInChildren<AudioListener>();
             Model = gameObject.FindGameObjectsWithTag(Tags.PlayerModel)[0];
+            CurrentWeapon = gameObject.FindGameObjectsWithTag(Tags.Weapon)[0].GetComponent<GunEntity>();
             TextLabel = GetComponent<TextLabel>();
             TextLabel.Text = gameObject.transform.name;
 

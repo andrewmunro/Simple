@@ -8,6 +8,7 @@ TagManager:
   - RemoteOnly
   - Vehicle
   - PlayerModel
+  - Weapon
   layers:
   - Default
   - TransparentFX
